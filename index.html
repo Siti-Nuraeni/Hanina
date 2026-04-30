@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Siti Nuraeni — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green-50:  #f0faf0;
+      --green-100: #d6f5d6;
+      --green-200: #aeeaae;
+      --green-300: #72d672;
+      --green-400: #3db83d;
+      --green-500: #2a9a2a;
+      --green-600: #1e7a1e;
+      --cream: #fdfcf7;
+      --dark: #1a2b1a;
+      --mid:  #3a5a3a;
+      --text: #2d3d2d;
+      --accent: #a8d5a2;
+      --gold: #c8a84b;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 4rem;
+      background: rgba(240,250,240,0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--green-200);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600;
+      color: var(--green-600); letter-spacing: .02em;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: .85rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--green-400); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+      padding: 8rem 4rem 4rem;
+      background: linear-gradient(135deg, var(--green-50) 0%, #e8f7e8 50%, var(--cream) 100%);
+      position: relative; overflow: hidden;
+    }
+
+    /* decorative blobs */
+    .hero::before {
+      content: '';
+      position: absolute; width: 560px; height: 560px;
+      background: radial-gradient(circle, var(--green-200) 0%, transparent 70%);
+      top: -120px; right: -120px; border-radius: 50%;
+      opacity: .55; pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; width: 320px; height: 320px;
+      background: radial-gradient(circle, var(--green-100) 0%, transparent 70%);
+      bottom: 0; left: -80px; border-radius: 50%;
+      opacity: .6; pointer-events: none;
+    }
+
+    .hero-text { position: relative; z-index: 2; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green-100); border: 1px solid var(--green-300);
+      color: var(--green-600); font-size: .78rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .35rem .85rem; border-radius: 100px; margin-bottom: 1.8rem;
+    }
+    .hero-badge span { width: 7px; height: 7px; background: var(--green-400); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5rem); font-weight: 600; line-height: 1.05;
+      color: var(--dark); margin-bottom: .5rem;
+    }
+    .hero-name em { font-style: italic; color: var(--green-500); }
+
+    .hero-title {
+      font-size: 1rem; font-weight: 300; letter-spacing: .06em;
+      color: var(--mid); text-transform: uppercase; margin-bottom: 1.6rem;
+    }
+
+    .hero-summary {
+      font-size: 1.05rem; line-height: 1.8; color: #4a5e4a; max-width: 480px;
+      margin-bottom: 2.4rem;
+    }
+
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--green-500); color: #fff;
+      padding: .85rem 2rem; border-radius: 100px;
+      font-size: .9rem; font-weight: 500; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--green-600); transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1.5px solid var(--green-400); color: var(--green-600);
+      padding: .85rem 2rem; border-radius: 100px;
+      font-size: .9rem; font-weight: 500; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-outline:hover { background: var(--green-100); transform: translateY(-2px); }
+
+    /* Hero visual side */
+    .hero-visual { position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; }
+
+    .avatar-ring {
+      width: 380px; height: 380px; border-radius: 50%;
+      border: 3px solid var(--green-300);
+      padding: 10px;
+      background: linear-gradient(135deg, var(--green-100), var(--green-50));
+      position: relative;
+    }
+
+    .avatar-inner {
+      width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+      background: linear-gradient(160deg, var(--green-200) 0%, var(--green-400) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* SVG illustration inside avatar */
+    .avatar-svg { width: 100%; height: 100%; }
+
+    /* floating stat cards */
+    .stat-card {
+      position: absolute;
+      background: #fff; border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+      padding: 1rem 1.3rem;
+      display: flex; flex-direction: column;
+      border-left: 3px solid var(--green-400);
+      min-width: 140px;
+      animation: floatCard 4s ease-in-out infinite;
+    }
+    .stat-card:nth-child(2) { animation-delay: -2s; }
+    .stat-card.c1 { top: 30px; right: -40px; }
+    .stat-card.c2 { bottom: 60px; right: -60px; }
+    .stat-card.c3 { bottom: 20px; left: -60px; }
+
+    @keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600; color: var(--green-600);
+    }
+    .stat-label { font-size: .75rem; color: var(--mid); font-weight: 400; }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 6rem 4rem; }
+    section:nth-child(even) { background: var(--green-50); }
+
+    .section-label {
+      font-size: .75rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--green-400); margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.15;
+      color: var(--dark); margin-bottom: 3rem;
+    }
+    .section-title em { font-style: italic; color: var(--green-500); }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--green-600); color: #fff;
+      padding: 3rem 4rem;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+      text-align: center;
+    }
+    .sstat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 600; color: var(--green-200);
+    }
+    .sstat-label { font-size: .85rem; opacity: .8; margin-top: .3rem; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+    .skill-card {
+      background: #fff; border-radius: 16px; padding: 1.8rem;
+      border: 1px solid var(--green-200);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .skill-card:hover { box-shadow: 0 12px 40px rgba(0,80,0,.12); transform: translateY(-4px); }
+
+    .skill-icon { font-size: 2rem; margin-bottom: .8rem; }
+    .skill-title { font-weight: 600; font-size: 1rem; color: var(--dark); margin-bottom: .6rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag {
+      background: var(--green-100); color: var(--green-600);
+      font-size: .73rem; font-weight: 500; padding: .25rem .65rem;
+      border-radius: 100px; border: 1px solid var(--green-200);
+    }
+
+    /* ── EXPERIENCE TIMELINE ── */
+    .timeline { position: relative; max-width: 860px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 18px; top: 0; bottom: 0;
+      width: 2px; background: var(--green-200);
+    }
+
+    .tl-item { display: flex; gap: 2.5rem; margin-bottom: 3rem; position: relative; }
+    .tl-dot {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: var(--green-100); border: 2px solid var(--green-400);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; position: relative; z-index: 1;
+    }
+    .tl-body { flex: 1; }
+    .tl-period {
+      font-size: .75rem; font-weight: 500; letter-spacing: .08em;
+      color: var(--green-400); text-transform: uppercase; margin-bottom: .3rem;
+    }
+    .tl-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--dark); margin-bottom: .15rem;
+    }
+    .tl-org { font-size: .9rem; color: var(--mid); margin-bottom: .9rem; }
+    .tl-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .tl-list li { font-size: .9rem; line-height: 1.65; padding-left: 1.2rem; position: relative; }
+    .tl-list li::before { content: '↳'; position: absolute; left: 0; color: var(--green-400); }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+
+    .proj-card {
+      background: #fff; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--green-200);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .proj-card:hover { box-shadow: 0 16px 50px rgba(0,80,0,.13); transform: translateY(-5px); }
+
+    .proj-banner {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      position: relative; overflow: hidden;
+    }
+    .proj-banner svg { width: 100%; height: 100%; position: absolute; top:0; left:0; }
+    .proj-banner-icon { position: relative; z-index: 1; }
+
+    .proj-body { padding: 1.6rem; }
+    .proj-label {
+      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--green-400); font-weight: 500; margin-bottom: .4rem;
+    }
+    .proj-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--dark); margin-bottom: .6rem; }
+    .proj-desc { font-size: .88rem; line-height: 1.7; color: #4a5e4a; }
+
+    /* ── AWARDS ── */
+    .awards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+    .award-card {
+      background: #fff; border-radius: 16px; padding: 1.6rem;
+      border: 1px solid var(--green-200);
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      transition: box-shadow .2s;
+    }
+    .award-card:hover { box-shadow: 0 8px 30px rgba(0,80,0,.1); }
+    .award-icon { font-size: 2rem; flex-shrink: 0; }
+    .award-title { font-weight: 600; font-size: .95rem; color: var(--dark); margin-bottom: .2rem; }
+    .award-org { font-size: .82rem; color: var(--mid); }
+
+    /* ── EDUCATION ── */
+    .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .edu-card {
+      background: #fff; border-radius: 16px; padding: 1.8rem;
+      border-left: 4px solid var(--green-400);
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    .edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--dark); margin-bottom: .3rem; }
+    .edu-school { font-size: .9rem; color: var(--mid); margin-bottom: .2rem; }
+    .edu-year { font-size: .78rem; font-weight: 500; color: var(--green-400); letter-spacing: .08em; }
+
+    /* ── CERTS ── */
+    .certs-list { display: flex; flex-direction: column; gap: .85rem; max-width: 700px; }
+    .cert-row {
+      display: flex; align-items: center; gap: 1rem;
+      background: #fff; padding: 1rem 1.4rem; border-radius: 12px;
+      border: 1px solid var(--green-200);
+    }
+    .cert-check { width: 28px; height: 28px; border-radius: 50%; background: var(--green-100); display:flex;align-items:center;justify-content:center; color:var(--green-500); flex-shrink:0; }
+    .cert-text { font-size: .9rem; color: var(--text); }
+    .cert-year { margin-left: auto; font-size: .78rem; color: var(--mid); font-weight: 500; }
+
+    /* ── CONTACT ── */
+    .contact-wrapper {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-row {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: .95rem; color: var(--mid);
+    }
+    .contact-icon { font-size: 1.3rem; }
+
+    .contact-visual {
+      background: linear-gradient(135deg, var(--green-100), var(--green-200));
+      border-radius: 24px; padding: 3rem;
+      display: flex; flex-direction: column; gap: 1.2rem; align-items: center;
+      text-align: center;
+    }
+    .contact-visual-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 600; color: var(--dark);
+    }
+    .contact-visual-sub { font-size: .9rem; color: var(--mid); line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,.6);
+      text-align: center; padding: 2rem 4rem;
+      font-size: .82rem;
+    }
+    footer strong { color: var(--green-300); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; text-align: center; }
+      .hero-visual { display: none; }
+      .hero-ctas { justify-content: center; }
+      section { padding: 4rem 1.5rem; }
+      .stats-strip { grid-template-columns: repeat(2,1fr); padding: 2.5rem 1.5rem; }
+      .skills-grid, .projects-grid, .awards-grid, .edu-grid, .contact-wrapper { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Siti Nuraeni</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-text">
+    <div class="hero-badge"><span></span> Open to opportunities</div>
+    <h1 class="hero-name">Siti <em>Nuraeni</em><br>M.Ed., CTP</h1>
+    <p class="hero-title">Instructional Designer · Curriculum Developer · L&amp;D Specialist</p>
+    <p class="hero-summary">
+      Senior Instructional Designer with 8+ years building high-impact learning experiences across corporate, government, and international education sectors — bilingual, globally minded, and driven by measurable learner outcomes.
+    </p>
+    <div class="hero-ctas">
+      <a href="#experience" class="btn-primary">View My Work</a>
+      <a href="mailto:sitinuraenieny@gmail.com" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="avatar-ring">
+      <div class="avatar-inner">
+        <!-- Professional illustration SVG -->
+        <svg class="avatar-svg" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background gradient -->
+          <defs>
+            <radialGradient id="bg" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#72d672"/>
+              <stop offset="100%" stop-color="#1e7a1e"/>
+            </radialGradient>
+            <radialGradient id="skin" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#f5c8a0"/>
+              <stop offset="100%" stop-color="#d4956a"/>
+            </radialGradient>
+          </defs>
+          <rect width="360" height="360" fill="url(#bg)"/>
+          <!-- Decorative leaves -->
+          <ellipse cx="40" cy="80" rx="28" ry="14" fill="#aeeaae" opacity=".5" transform="rotate(-30 40 80)"/>
+          <ellipse cx="310" cy="60" rx="22" ry="10" fill="#aeeaae" opacity=".4" transform="rotate(20 310 60)"/>
+          <ellipse cx="320" cy="290" rx="30" ry="12" fill="#aeeaae" opacity=".35" transform="rotate(-15 320 290)"/>
+          <ellipse cx="30" cy="300" rx="24" ry="11" fill="#aeeaae" opacity=".4" transform="rotate(25 30 300)"/>
+          <!-- Body / outfit -->
+          <ellipse cx="180" cy="340" rx="90" ry="60" fill="#145214"/>
+          <rect x="120" y="265" width="120" height="90" rx="20" fill="#1e7a1e"/>
+          <!-- Neck -->
+          <rect x="162" y="225" width="36" height="44" rx="10" fill="url(#skin)"/>
+          <!-- Headscarf base -->
+          <ellipse cx="180" cy="165" rx="75" ry="78" fill="#0d5c0d"/>
+          <!-- Headscarf highlight -->
+          <ellipse cx="180" cy="150" rx="65" ry="62" fill="#1a7a1a"/>
+          <!-- Face -->
+          <ellipse cx="180" cy="175" rx="55" ry="60" fill="url(#skin)"/>
+          <!-- Headscarf drape -->
+          <path d="M105 165 Q80 200 95 255 Q130 280 155 270 L155 250 Q130 258 115 235 Q102 210 115 175 Z" fill="#0d5c0d"/>
+          <path d="M255 165 Q280 200 265 255 Q230 280 205 270 L205 250 Q230 258 245 235 Q258 210 245 175 Z" fill="#0d5c0d"/>
+          <!-- Eyes -->
+          <ellipse cx="162" cy="172" rx="9" ry="10" fill="#fff"/>
+          <ellipse cx="198" cy="172" rx="9" ry="10" fill="#fff"/>
+          <ellipse cx="163" cy="173" rx="5.5" ry="6" fill="#3a1a00"/>
+          <ellipse cx="199" cy="173" rx="5.5" ry="6" fill="#3a1a00"/>
+          <circle cx="164.5" cy="171" r="1.8" fill="#fff"/>
+          <circle cx="200.5" cy="171" r="1.8" fill="#fff"/>
+          <!-- Eyebrows -->
+          <path d="M150 160 Q163 155 175 159" stroke="#5a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M185 159 Q197 155 210 160" stroke="#5a3010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Nose -->
+          <path d="M178 185 Q180 196 182 185" stroke="#c07040" stroke-width="1.5" fill="none"/>
+          <!-- Smile -->
+          <path d="M162 202 Q180 218 198 202" stroke="#c07040" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Cheek blush -->
+          <ellipse cx="148" cy="195" rx="14" ry="8" fill="#f0a080" opacity=".3"/>
+          <ellipse cx="212" cy="195" rx="14" ry="8" fill="#f0a080" opacity=".3"/>
+          <!-- Laptop / book in lap -->
+          <rect x="128" y="300" width="104" height="68" rx="8" fill="#0a4a0a"/>
+          <rect x="133" y="305" width="94" height="55" rx="5" fill="#0f5c0f"/>
+          <rect x="137" y="309" width="86" height="46" rx="3" fill="#1a8a1a" opacity=".7"/>
+          <!-- Screen content lines -->
+          <rect x="141" y="314" width="55" height="3" rx="1.5" fill="#aeeaae" opacity=".8"/>
+          <rect x="141" y="320" width="40" height="2.5" rx="1.2" fill="#aeeaae" opacity=".6"/>
+          <rect x="141" y="326" width="70" height="2.5" rx="1.2" fill="#aeeaae" opacity=".6"/>
+          <rect x="141" y="332" width="50" height="2.5" rx="1.2" fill="#aeeaae" opacity=".6"/>
+          <rect x="141" y="338" width="60" height="2.5" rx="1.2" fill="#aeeaae" opacity=".6"/>
+          <!-- Small star sparkles -->
+          <text x="50" y="130" font-size="14" fill="#d6f5d6" opacity=".6">✦</text>
+          <text x="290" y="120" font-size="10" fill="#d6f5d6" opacity=".5">✦</text>
+          <text x="75" y="270" font-size="8" fill="#d6f5d6" opacity=".5">✦</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Floating stat cards -->
+    <div class="stat-card c1">
+      <span class="stat-num">150+</span>
+      <span class="stat-label">Courses Designed</span>
+    </div>
+    <div class="stat-card c2">
+      <span class="stat-num">600+</span>
+      <span class="stat-label">Assets QA'd / Month</span>
+    </div>
+    <div class="stat-card c3">
+      <span class="stat-num">8+</span>
+      <span class="stat-label">Years Experience</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="fade-in">
+    <div class="sstat-num">1,000+</div>
+    <div class="sstat-label">Educators Trained</div>
+  </div>
+  <div class="fade-in">
+    <div class="sstat-num">70+</div>
+    <div class="sstat-label">Designers Mentored</div>
+  </div>
+  <div class="fade-in">
+    <div class="sstat-num">200+</div>
+    <div class="sstat-label">E-Learning Videos Produced</div>
+  </div>
+  <div class="fade-in">
+    <div class="sstat-num">4.9/5</div>
+    <div class="sstat-label">Learner Satisfaction Score</div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">What I Bring</p>
+  <h2 class="section-title">Core <em>Competencies</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🎓</div>
+      <div class="skill-title">Instructional Design & Curriculum</div>
+      <div class="skill-tags">
+        <span class="tag">ADDIE</span><span class="tag">SAM</span><span class="tag">Bloom's Taxonomy</span>
+        <span class="tag">Gagne's 9 Events</span><span class="tag">Andragogy</span>
+        <span class="tag">Gamification</span><span class="tag">Scenario-Based Learning</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">💻</div>
+      <div class="skill-title">E-Learning & Authoring Tools</div>
+      <div class="skill-tags">
+        <span class="tag">Articulate 360</span><span class="tag">Storyline</span><span class="tag">Rise</span>
+        <span class="tag">H5P</span><span class="tag">Canva</span><span class="tag">Miro</span>
+        <span class="tag">Storyboarding</span><span class="tag">Scripting</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📊</div>
+      <div class="skill-title">LMS & Learner Analytics</div>
+      <div class="skill-tags">
+        <span class="tag">Moodle</span><span class="tag">Kajabi</span><span class="tag">Lerero</span>
+        <span class="tag">Learner Tracking</span><span class="tag">Data Analysis</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📋</div>
+      <div class="skill-title">Assessment & Evaluation</div>
+      <div class="skill-tags">
+        <span class="tag">Kirkpatrick Model</span><span class="tag">Diagnostic Assessment</span>
+        <span class="tag">Formative</span><span class="tag">Summative</span><span class="tag">TNA</span><span class="tag">M&E</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🚀</div>
+      <div class="skill-title">Project & Program Management</div>
+      <div class="skill-tags">
+        <span class="tag">End-to-End Program Design</span>
+        <span class="tag">Stakeholder Collaboration</span>
+        <span class="tag">Cross-functional Teams</span>
+        <span class="tag">Google Workspace</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🌏</div>
+      <div class="skill-title">Communication & Language</div>
+      <div class="skill-tags">
+        <span class="tag">Bilingual (EN/ID)</span>
+        <span class="tag">Training Facilitation</span>
+        <span class="tag">Technical Writing</span>
+        <span class="tag">QA Documentation</span>
+        <span class="tag">AI-Assisted Content</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Career Journey</p>
+  <h2 class="section-title">Professional <em>Experience</em></h2>
+  <div class="timeline">
+
+    <div class="tl-item fade-in">
+      <div class="tl-dot">🔍</div>
+      <div class="tl-body">
+        <p class="tl-period">Nov 2024 – Present</p>
+        <p class="tl-role">Senior Instructional Design QA Specialist</p>
+        <p class="tl-org">The KPI Institute · Melbourne, Australia (Remote)</p>
+        <ul class="tl-list">
+          <li>Designed and maintained 50+ course development guidelines for ILT, VILT, self-paced, and blended formats — supporting 70+ designers</li>
+          <li>Conducted quality assurance reviews for 600+ course assets monthly</li>
+          <li>Built a structured feedback framework adopted across the entire production pipeline</li>
+          <li>Integrated QA findings into performance review cycles, developing assessment templates</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item fade-in">
+      <div class="tl-dot">📚</div>
+      <div class="tl-body">
+        <p class="tl-period">Mar 2022 – Nov 2024</p>
+        <p class="tl-role">Senior Instructional Design Specialist</p>
+        <p class="tl-org">The KPI Institute · Melbourne, Australia (Remote)</p>
+        <ul class="tl-list">
+          <li>Designed and developed 150+ multi-modal courses for a global audience with 100% LMS-ready accuracy</li>
+          <li>Scripted, storyboarded, and produced 200+ e-learning videos and 100+ H5P interactive activities</li>
+          <li>Developed 200+ multi-format assessments for 500+ learners across global cohorts</li>
+          <li>Facilitated onboarding workshops and mentored 20+ instructional designers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item fade-in">
+      <div class="tl-dot">🛡️</div>
+      <div class="tl-body">
+        <p class="tl-period">Apr 2022 – Jun 2022</p>
+        <p class="tl-role">Curriculum & Learning Content Development Specialist</p>
+        <p class="tl-org">Transparent Language & U.S. SOCOM · United States (Contract)</p>
+        <ul class="tl-list">
+          <li>Developed 50+ course assets for a specialized defense language program using ADDIE/SAM</li>
+          <li>Increased learner engagement by 30% through structured instructional materials</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item fade-in">
+      <div class="tl-dot">🏛️</div>
+      <div class="tl-body">
+        <p class="tl-period">Jun 2021 – Feb 2022</p>
+        <p class="tl-role">Senior Education Program Consultant</p>
+        <p class="tl-org">Ministry of Education, Culture, Research & Technology · Jakarta, Indonesia</p>
+        <ul class="tl-list">
+          <li>Designed national training frameworks for 1,000+ educators across 20+ provinces</li>
+          <li>Applied Kirkpatrick's Four-Level Evaluation Model to measure training impact</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item fade-in">
+      <div class="tl-dot">📈</div>
+      <div class="tl-body">
+        <p class="tl-period">May 2019 – Dec 2021</p>
+        <p class="tl-role">Lead Monitoring & Evaluation Specialist</p>
+        <p class="tl-org">TVET PMO · IPB University & Ministry of Education · Indonesia</p>
+        <ul class="tl-list">
+          <li>Designed 3-year Logical Frameworks monitoring 85+ program activities</li>
+          <li>Scaled TVET model from 2 pilot schools to 60 vocational schools nationally</li>
+          <li>Achieved satisfaction scores of 4.9/5.0 (Module Digitalization) and 4.8/5.0 (Competency Training)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item fade-in">
+      <div class="tl-dot">🎯</div>
+      <div class="tl-body">
+        <p class="tl-period">2012 – 2019</p>
+        <p class="tl-role">English Language Coach, IELTS/TOEFL Tutor & EFL Teacher</p>
+        <p class="tl-org">Private Institutions & Public Schools · Indonesia</p>
+        <ul class="tl-list">
+          <li>Delivered IELTS/TOEFL prep to 100+ learners; improved average band scores by 0.5–1.0</li>
+          <li>Designed Cambridge and Pearson-aligned EFL curricula for 500+ learners — 70% increase in assessment scores</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Key Work</p>
+  <h2 class="section-title">Featured <em>Projects</em></h2>
+  <div class="projects-grid">
+
+    <div class="proj-card fade-in">
+      <div class="proj-banner" style="background: linear-gradient(135deg,#c8f5c8,#6ac86a);">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#b5ebb5"/>
+          <circle cx="60" cy="90" r="50" fill="#72d672" opacity=".4"/>
+          <circle cx="340" cy="40" r="35" fill="#3db83d" opacity=".3"/>
+          <rect x="100" y="50" width="200" height="80" rx="10" fill="#fff" opacity=".25"/>
+          <rect x="115" y="65" width="120" height="8" rx="4" fill="#1e7a1e" opacity=".5"/>
+          <rect x="115" y="80" width="80" height="6" rx="3" fill="#1e7a1e" opacity=".4"/>
+          <rect x="115" y="93" width="100" height="6" rx="3" fill="#1e7a1e" opacity=".4"/>
+          <rect x="115" y="106" width="70" height="6" rx="3" fill="#1e7a1e" opacity=".4"/>
+          <circle cx="260" cy="90" r="22" fill="#1e7a1e" opacity=".2"/>
+          <text x="248" y="97" font-size="22" fill="#1e7a1e" opacity=".7">🏫</text>
+        </svg>
+        <span class="proj-banner-icon"></span>
+      </div>
+      <div class="proj-body">
+        <p class="proj-label">National Program · 10+ Provinces</p>
+        <h3 class="proj-title">National Teacher Training Program</h3>
+        <p class="proj-desc">Architected national teacher training programs reaching 1,000+ educators. Utilized Miro, Logical Framework, and Kirkpatrick's model for program design and multi-level evaluation. Led cross-sector stakeholder engagement for Balai Besar Guru Penggerak.</p>
+      </div>
+    </div>
+
+    <div class="proj-card fade-in">
+      <div class="proj-banner" style="background: linear-gradient(135deg,#d6f5d6,#4ab04a);">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#c8f0c8"/>
+          <circle cx="350" cy="130" r="60" fill="#2a9a2a" opacity=".25"/>
+          <!-- Indonesia flag shape -->
+          <rect x="130" y="55" width="80" height="35" rx="3" fill="#e00" opacity=".5"/>
+          <rect x="130" y="90" width="80" height="35" rx="3" fill="#fff" opacity=".7"/>
+          <!-- NL flag shape -->
+          <rect x="230" y="55" width="80" height="23" rx="3" fill="#ae1c28" opacity=".5"/>
+          <rect x="230" y="78" width="80" height="24" rx="3" fill="#fff" opacity=".7"/>
+          <rect x="230" y="102" width="80" height="23" rx="3" fill="#21468b" opacity=".5"/>
+          <!-- Arrow between -->
+          <path d="M215 90 L225 90" stroke="#1e7a1e" stroke-width="3" marker-end="url(#arr)"/>
+          <text x="205" y="95" font-size="14" fill="#1e7a1e">⇄</text>
+          <!-- Chart bars bottom -->
+          <rect x="80" y="130" width="15" height="30" rx="3" fill="#1e7a1e" opacity=".4"/>
+          <rect x="100" y="115" width="15" height="45" rx="3" fill="#1e7a1e" opacity=".4"/>
+          <rect x="120" y="100" width="15" height="60" rx="3" fill="#1e7a1e" opacity=".55"/>
+          <rect x="295" y="120" width="15" height="40" rx="3" fill="#1e7a1e" opacity=".4"/>
+          <rect x="315" y="108" width="15" height="52" rx="3" fill="#1e7a1e" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <p class="proj-label">Bilateral Program · M&E Lead</p>
+        <h3 class="proj-title">Indonesia-Netherlands TVET Pilot Program</h3>
+        <p class="proj-desc">Led M&E for the Indonesia-Netherlands bilateral TVET pilot. Designed a 3-year Logical Framework and monitored 85+ activities. Findings supported scaling from 2 pilot schools to 60 vocational schools nationally.</p>
+      </div>
+    </div>
+
+    <div class="proj-card fade-in">
+      <div class="proj-banner" style="background: linear-gradient(135deg,#e8f7e8,#5ab55a);">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#d0efd0"/>
+          <rect x="60" y="40" width="280" height="100" rx="12" fill="#fff" opacity=".4"/>
+          <!-- screen layers -->
+          <rect x="75" y="55" width="100" height="70" rx="6" fill="#1e7a1e" opacity=".25"/>
+          <rect x="190" y="55" width="135" height="30" rx="5" fill="#3db83d" opacity=".2"/>
+          <rect x="190" y="90" width="90" height="8" rx="3" fill="#1e7a1e" opacity=".3"/>
+          <rect x="190" y="103" width="110" height="8" rx="3" fill="#1e7a1e" opacity=".3"/>
+          <text x="88" y="97" font-size="30" fill="#1e7a1e" opacity=".5">▶</text>
+          <circle cx="330" cy="145" r="25" fill="#2a9a2a" opacity=".2"/>
+          <text x="318" y="152" font-size="18" fill="#1e7a1e" opacity=".5">H5P</text>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <p class="proj-label">E-Learning Production · Global Audience</p>
+        <h3 class="proj-title">150+ Multi-Modal Course Suite</h3>
+        <p class="proj-desc">Managed end-to-end production of 150+ self-paced, ILT, VILT, and blended courses for The KPI Institute's global learners. Included 200+ e-learning videos and 100+ H5P gamified activities with scenario-based exercises.</p>
+      </div>
+    </div>
+
+    <div class="proj-card fade-in">
+      <div class="proj-banner" style="background: linear-gradient(135deg,#d8f3d8,#48a848);">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#cceacc"/>
+          <!-- Defense/language theme -->
+          <circle cx="200" cy="90" r="65" fill="#1e7a1e" opacity=".15"/>
+          <circle cx="200" cy="90" r="45" fill="#1e7a1e" opacity=".12"/>
+          <circle cx="200" cy="90" r="28" fill="#1e7a1e" opacity=".15"/>
+          <text x="183" y="99" font-size="22" fill="#1e7a1e" opacity=".6">🌐</text>
+          <!-- Bar chart side -->
+          <rect x="50" y="110" width="15" height="40" rx="3" fill="#2a9a2a" opacity=".5"/>
+          <rect x="70" y="90" width="15" height="60" rx="3" fill="#2a9a2a" opacity=".5"/>
+          <rect x="90" y="70" width="15" height="80" rx="3" fill="#2a9a2a" opacity=".6"/>
+          <text x="50" y="165" font-size="9" fill="#1e7a1e" opacity=".5">+30% engagement</text>
+          <!-- Stars right -->
+          <text x="310" y="60" font-size="20" fill="#c8a84b" opacity=".7">★</text>
+          <text x="335" y="80" font-size="14" fill="#c8a84b" opacity=".5">★</text>
+          <text x="320" y="95" font-size="10" fill="#c8a84b" opacity=".5">★</text>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <p class="proj-label">Defense Language Program · Contract</p>
+        <h3 class="proj-title">U.S. SOCOM Language Curriculum</h3>
+        <p class="proj-desc">Developed 50+ course assets for a specialized defense language program with Transparent Language & U.S. SOCOM. Applied ADDIE/SAM methodology — achieving 30% increase in learner engagement through structured instructional design.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Education &amp; <em>Certifications</em></h2>
+  <div class="edu-grid" style="margin-bottom: 3rem;">
+    <div class="edu-card fade-in">
+      <p class="edu-degree">Master of Education (M.Ed.)</p>
+      <p class="edu-school">Curriculum and Instruction</p>
+      <p class="edu-school">The Pennsylvania State University · USA</p>
+      <p class="edu-year">2017 – 2019 · Fulbright Scholar</p>
+    </div>
+    <div class="edu-card fade-in">
+      <p class="edu-degree">Bachelor of Science (B.S.)</p>
+      <p class="edu-school">English Teaching and Education</p>
+      <p class="edu-school">State Islamic University of Syarif Hidayatullah Jakarta</p>
+      <p class="edu-year">2009 – 2014</p>
+    </div>
+  </div>
+
+  <p class="section-label" style="margin-bottom:.6rem;">Certifications</p>
+  <div class="certs-list">
+    <div class="cert-row fade-in">
+      <div class="cert-check">✓</div>
+      <span class="cert-text">Certified Training Professional (CTP) — The KPI Institute</span>
+      <span class="cert-year">2025</span>
+    </div>
+    <div class="cert-row fade-in">
+      <div class="cert-check">✓</div>
+      <span class="cert-text">Graduate Student Online Teaching Certificate — Penn State University</span>
+      <span class="cert-year">2019</span>
+    </div>
+    <div class="cert-row fade-in">
+      <div class="cert-check">✓</div>
+      <span class="cert-text">CITI Research Ethics Certification — Penn State University</span>
+      <span class="cert-year">2017</span>
+    </div>
+    <div class="cert-row fade-in">
+      <div class="cert-check">✓</div>
+      <span class="cert-text">Personal Tutor Excellence Training — Pearson Test Jakarta</span>
+      <span class="cert-year">2015</span>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" style="background: var(--green-50)">
+  <p class="section-label">Recognition</p>
+  <h2 class="section-title">Awards &amp; <em>Honours</em></h2>
+  <div class="awards-grid">
+    <div class="award-card fade-in">
+      <div class="award-icon">🏆</div>
+      <div>
+        <p class="award-title">Fulbright Scholarship Awardee</p>
+        <p class="award-org">U.S. Department of State · 2016</p>
+      </div>
+    </div>
+    <div class="award-card fade-in">
+      <div class="award-icon">🎖️</div>
+      <div>
+        <p class="award-title">LPDP Scholarship Awardee</p>
+        <p class="award-org">Indonesian Government · 2016</p>
+      </div>
+    </div>
+    <div class="award-card fade-in">
+      <div class="award-icon">🔬</div>
+      <div>
+        <p class="award-title">Research Grant Recipient</p>
+        <p class="award-org">American Educational Research Association (AERA) · 2019</p>
+      </div>
+    </div>
+    <div class="award-card fade-in">
+      <div class="award-icon">🌟</div>
+      <div>
+        <p class="award-title">Children's Rights Activist of the Year</p>
+        <p class="award-org">Local Government Awards, Brebes, Indonesia · 2016</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Let's Connect</p>
+  <h2 class="section-title">Get In <em>Touch</em></h2>
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <p style="font-size:1.05rem;line-height:1.8;color:#4a5e4a;margin-bottom:1rem;">
+        I'm always open to discussing instructional design projects, L&amp;D consulting, or curriculum development opportunities. Feel free to reach out!
+      </p>
+      <div class="contact-row"><span class="contact-icon">📧</span><span>sitinuraenieny@gmail.com</span></div>
+      <div class="contact-row"><span class="contact-icon">📱</span><span>+62 85601717217</span></div>
+      <div class="contact-row"><span class="contact-icon">📍</span><span>Jakarta, Indonesia</span></div>
+      <div class="contact-row"><span class="contact-icon">💼</span><span>LinkedIn · Portfolio</span></div>
+      <a href="mailto:sitinuraenieny@gmail.com" class="btn-primary" style="margin-top:1rem;display:inline-block;text-align:center;">Send a Message</a>
+    </div>
+    <div class="contact-visual fade-in">
+      <!-- Visual illustration for contact -->
+      <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" style="width:200px;height:150px;">
+        <defs>
+          <radialGradient id="cg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#72d672"/>
+            <stop offset="100%" stop-color="#1e7a1e"/>
+          </radialGradient>
+        </defs>
+        <circle cx="150" cy="110" r="90" fill="url(#cg)" opacity=".2"/>
+        <!-- envelope -->
+        <rect x="60" y="70" width="180" height="120" rx="10" fill="#fff" stroke="#2a9a2a" stroke-width="2.5"/>
+        <path d="M60 70 L150 140 L240 70" stroke="#2a9a2a" stroke-width="2.5" fill="none"/>
+        <path d="M60 190 L120 130" stroke="#2a9a2a" stroke-width="1.5" opacity=".4"/>
+        <path d="M240 190 L180 130" stroke="#2a9a2a" stroke-width="1.5" opacity=".4"/>
+        <!-- sparkles -->
+        <text x="38" y="62" font-size="16" fill="#c8a84b">✦</text>
+        <text x="240" y="55" font-size="12" fill="#c8a84b" opacity=".7">✦</text>
+        <text x="255" y="175" font-size="10" fill="#2a9a2a" opacity=".6">✦</text>
+      </svg>
+      <p class="contact-visual-title">Open to Collaboration</p>
+      <p class="contact-visual-sub">Bilingual (EN/ID) · Available for remote & international projects · Based in Jakarta</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong>Siti Nuraeni, M.Ed., CTP</strong> · Instructional Designer &amp; L&amp;D Specialist · Jakarta, Indonesia</p>
+</footer>
+
+<!-- JS: fade-in on scroll -->
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
